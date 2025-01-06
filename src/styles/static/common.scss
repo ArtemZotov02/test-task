@@ -23,7 +23,7 @@ body {
   font-weight: $font-weight;
   font-size: $font-size-standart;
   line-height: $line-height;
-  color: var(--white);
+  color: var(--black);
   min-width: 320px; 
   margin: auto;
   background-color: var(--whiteBg);
@@ -32,6 +32,17 @@ body {
 input,button,textarea{
   font-family: $font-family;
 } 
+
+.container {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.no-scroll {
+  overflow: hidden; 
+}
+
 
 
 

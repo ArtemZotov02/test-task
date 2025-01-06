@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from "react";
 import ProductsItem from '../common/productsItem/ProductsItem';
-
+import style from './style.module.scss'
 const Home = () => {
   const [products, setProducts] = useState([]);
 
@@ -14,13 +14,15 @@ const Home = () => {
     fetchData();
   }, []) 
   return (
-    <div>
-      <h2>Товари</h2>
-      <div>
-        {products.map((product) => (
-          <ProductsItem key={product.id} product={product}/>
-        ))}
-      </div>
+    <div className='container'>
+      <div className={style.main}>
+        <h2 className={style.main__title}>Товари</h2>
+        <div className={style.products}>
+          {products.map((product) => (
+            <ProductsItem key={product.id} {...product} className={style.products__item}/>
+          ))}
+        </div>
+      </div>    
     </div>
   )
 }

@@ -8,6 +8,7 @@ export default function Layout({
     <>
        {<Header />}
         <main>{children}</main>
+        <footer>footer</footer>
     </>
   );
 }
