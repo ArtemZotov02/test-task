@@ -1,0 +1,43 @@
+//normalize
+@import "./normalize.scss";
+
+//variable
+@import "./variable";
+
+//fonts
+@import "./fonts";
+
+//mixins
+@import "./mixins.scss";
+
+/*styles*/
+html{
+  overflow-x: hidden; 
+
+  font-size: $font-size-l;
+}
+
+
+body {
+  font-family: $font-family;
+  font-weight: $font-weight;
+  font-size: $font-size-standart;
+  line-height: $line-height;
+  color: var(--white);
+  min-width: 320px; 
+  margin: auto;
+  background-color: var(--whiteBg);
+}
+
+input,button,textarea{
+  font-family: $font-family;
+} 
+
+
+
+
+
+
+
+
+

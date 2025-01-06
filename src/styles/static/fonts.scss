@@ -1,0 +1,26 @@
+@mixin font($fontname, $filename, $fontweight, $fontstyle: normal) {
+  @font-face {
+    font-family: $fontname;
+    src: 
+          url(#{'../../fonts/'+$filename+'.ttf'}) format("truetype");
+    font-weight: $fontweight;
+    font-style: $fontstyle;
+    font-display: swap;
+  }
+}
+
+// SFCompactRounded
+@include font('Oswald', 'Oswald-Bold', 700);
+@include font('Oswald', 'Oswald-SemiBold', 600);
+@include font('Oswald', 'Oswald-Medium', 500);
+@include font('Oswald', 'Oswald-Regular', 400);
+@include font('Oswald', 'Oswald-Regular', 300);
+@include font('Oswald', 'Oswald-Regular', 200);
+
+
+
+
+
+
+
+
