@@ -1,14 +1,14 @@
-import Header from "../header/Header";
+import Footer from "../footer/Footer.jsx";
+import Header from "../header/Header.tsx";
 
 export default function Layout({
   children
 }) {
-
   return (
     <>
-       {<Header />}
+       <Header/>
         <main>{children}</main>
-        <footer>footer</footer>
+      <Footer/>
     </>
   );
 }

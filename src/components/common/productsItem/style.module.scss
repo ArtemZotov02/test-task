@@ -13,6 +13,9 @@
 
   &:hover {
     border: 1px solid var(--black);
+    box-shadow: 0 -10px 10px var(--black);
+    transition: all 0.3s ease;
+
     .item__img {
       display: none;
     }
@@ -22,6 +25,9 @@
     .item__buy {
       display: block !important;
     }
+    .item__rating {
+      display: none;
+    }
   }
 }
 .item {
@@ -30,6 +36,7 @@
   align-items: center;
   text-align: center;
   padding: 20px;
+  cursor: pointer;
 
 
   &__img,
@@ -38,11 +45,17 @@
   }
 
   &__price {
-    margin-top: 10px;
+    margin-top: 15px;
   }
 
   &__imgHover {
     display: none;
+  }
+
+  &__rating {
+    display: flex;
+
+    margin-top: 15px
   }
 
   &__buy {
