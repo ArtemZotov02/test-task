@@ -5,23 +5,23 @@ import { Link } from 'react-router-dom';
 
 
 interface ProductsItemProps {
-  id: string | number,
+  id:  number,
   name: string,
-  price: string | number,
+  price: number,
   img: string,
   imgHover: string,
   reviews: number,
   btn: string
 }
 
-const ProductsItem: React.FC<ProductsItemProps> = ({
-  id= '',
-  name='',
-  price='',
-  img='',
-  imgHover='',
-  reviews = 0,
-  btn=''
+const ProductsCard: React.FC<ProductsItemProps> = ({
+  id,
+  name,
+  price,
+  img,
+  imgHover,
+  reviews,
+  btn
 }) => {
 
   return (
@@ -44,4 +44,4 @@ const ProductsItem: React.FC<ProductsItemProps> = ({
     </div>
   )
 }
-export default ProductsItem;
+export default ProductsCard;

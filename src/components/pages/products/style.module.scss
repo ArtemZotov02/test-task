@@ -18,7 +18,7 @@
   text-align: center;
   gap: 20px;
 
-  @include response ($d1200) {
+  @include response ($d1250) {
     grid-template-columns: repeat(3, 1fr);
   }
   @include response ($d699) {

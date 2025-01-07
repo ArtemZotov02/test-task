@@ -1,19 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import SingleProduct from '../../common/singleProduct/SingleProduct.tsx'
-
+import SingleProductCard from '../../common/singleProductCard/SingleProductCard.tsx'
+interface Review {
+  author: string
+  descr: string
+  grade: number
+}
 interface Product {
   id: number
   name: string
   descr: string
   price: number
   img: string[]
-  reviews: string[]
+  reviewsTitle: string
+  reviews: Review[]
   btn: string
-
+  btnReview: string
 }
 
-export default function ProductPage() {
+export default function SingleProductPage() {
   const location = useLocation()
   const navigate = useNavigate()
 
@@ -28,7 +33,11 @@ export default function ProductPage() {
           return
         }
         const data: Product = await response.json()
-        setProduct(data)
+        if (data && data.id) {
+          setProduct(data)
+        } else {
+          navigate('/404')
+        }
       } catch (error) {
         console.error('Помилка під час завантаження даних про продукт:', error)
         navigate('/404')
@@ -41,9 +50,14 @@ export default function ProductPage() {
     return <div>Завантаження...</div>
   }
 
+
+  if (!Object.keys(product).length) {
+    navigate('/404');
+    return null
+  }
   return (
     <div className="container">
-        {!!Object.keys(product).length && <SingleProduct {...product}/>}
+        {!!Object.keys(product).length && <SingleProductCard {...product}/>}
     </div>
   )
 }

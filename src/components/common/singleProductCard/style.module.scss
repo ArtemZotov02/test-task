@@ -1,0 +1,123 @@
+@import "../../../styles/static/mixins.scss";
+
+.singleProduct {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+  padding-top: 20px;
+
+  .imageSlider {
+    width: 50%;
+    display: flex;
+
+    &__slider {
+      width: 20%;
+      height: 700px;
+      overflow-y: auto;
+      &_img {
+        width: 80%;
+        margin: 10px auto;
+        border-radius: 20px;
+        border: 1px solid var(--gray);
+
+        &.active {
+          border: 1px solid var(--black);
+        }
+      }
+    }
+
+    &__current {
+      margin-left: 20px;
+      width: 80%;
+      height: 700px;
+      &_img {
+        height: 100%;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .info {
+    width: 50%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    &_name {
+      font-size: 30px;
+      margin-bottom: 20px;
+      line-height: 100%;
+    }
+    &_price {
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 100%;
+      margin-bottom: 20px;
+      margin-left: 10px;
+    }
+    &_descr {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: 300;
+      line-height: 150%;
+      letter-spacing: 1px;
+      border-bottom: 1px solid var(--gray);
+      padding-bottom: 20px;
+    }
+    &_reviewsTitle {
+      margin-top: 20px;
+      font-size: 20px;
+      line-height: 100%;
+    }
+  }
+
+  @include response ($d1250) {
+    flex-direction: column;
+    padding-top: 0px;
+
+    .imageSlider,
+    .info {
+      width: 100%;
+    }
+    .imageSlider {
+      &__slider,
+      &__current {
+        height: 500px;
+        margin-left: 0;
+      }
+    }
+    .imageSlider {
+      &__slider_img{
+
+        width: 60%;
+      }
+    }
+  }
+
+  @include response ($d499) {
+
+    padding-top: 0px;
+
+    .imageSlider {
+      flex-direction: column-reverse;
+
+      &__slider {
+        display: flex;
+        width: 90%;
+        height: 100px;
+        margin: 20px auto 0;
+        &_img {
+          width: 100%;
+          height: 100%;
+          margin: 0;
+          & + .imageSlider__slider_img {
+            margin-left: 10px;
+          }
+        }
+      }
+      &__current {
+        height: 320px;
+        width: 100%;
+      }
+    }
+  }
+}

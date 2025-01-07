@@ -1,0 +1,32 @@
+.reviews {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  max-height: 414px;
+  overflow-y: auto;
+
+  &_item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    padding: 15px;
+    border: 1px solid var(--gray);
+    border-radius: 10px;
+
+    &__header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      &_name {
+        margin-right: 20px;
+        font-size: 20px;
+        line-height: 100%;
+      }
+    }
+
+    &__descr {
+      font-size: 20px;
+      line-height: 100%;
+    }
+  }
+}
