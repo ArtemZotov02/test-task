@@ -3,9 +3,9 @@ import { Routes, Route } from 'react-router-dom'
 
 import Layout from "./components/common/layout/Layout";
 import Home from "./components/pages/Home";
-import Products from "./components/pages/products/Products";
+import Products from "./components/pages/products/Products.tsx";
 import NotFoundPage from "./components/pages/404/404";
-import ProductPage from './components/pages/productPage/ProductPage.tsx';
+import SingleProductPage from './components/pages/singleProductPage/singleProductPage.tsx';
 
 
 
@@ -16,7 +16,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home/>} />
                 <Route path="/products" element={<Products/>} />
-                <Route path="/product/:productId" element={<ProductPage />} /> 
+                <Route path="/product/:productId" element={<SingleProductPage />} /> 
 
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>
