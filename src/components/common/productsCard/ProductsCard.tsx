@@ -2,17 +2,8 @@ import React from 'react'
 import style from './style.module.scss'
 import { Button, Rating } from '@mui/material'
 import { Link } from 'react-router-dom';
+import { ProductsItemProps } from '../../../types/Types';
 
-
-interface ProductsItemProps {
-  id:  number,
-  name: string,
-  price: number,
-  img: string,
-  imgHover: string,
-  reviews: number,
-  btn: string
-}
 
 const ProductsCard: React.FC<ProductsItemProps> = ({
   id,

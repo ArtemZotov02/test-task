@@ -13,12 +13,12 @@
 /*styles*/
 html{
   overflow-x: hidden; 
-
   font-size: $font-size-l;
+  background: var(--black-10);
 }
 
 main {
-  min-height: calc(100vh - 130px);
+  min-height: calc(100vh - 120px);
 }
 
 
@@ -40,7 +40,7 @@ input,button,textarea{
 .container {
   max-width: 1800px;
   padding: 0 20px;
-  margin: 90px auto;
+  margin: 70px auto;
 }
 
 .no-scroll {
