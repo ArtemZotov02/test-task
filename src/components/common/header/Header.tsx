@@ -4,18 +4,8 @@ import { Button } from "@mui/material"
 import style from './style.module.scss'
 import ClassNames from 'classnames'
 import { BrowserRouter as Router, Routes, Route, Link, NavLink } from 'react-router-dom';
+import { HeaderData } from "../../../types/Types"
 
-interface MenuItem {
-  name: string
-  link: string
-}
-
-interface HeaderData {
-  logo: string
-  menu: MenuItem[]
-  login: string
-  registration: string
-}
 
 export default function Header() {
   const [data, setData] = useState<HeaderData | null>(null) 

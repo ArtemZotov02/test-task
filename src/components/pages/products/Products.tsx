@@ -1,16 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import ProductsCard from '../../common/productsCard/ProductsCard.tsx'
 import style from './style.module.scss'
+import { Product } from '../../../types/Types.tsx'
 
-interface Product {
-  id: number
-  name: string
-  price: number
-  img: string
-  imgHover: string
-  reviews: number
-  btn: string
-}
+
 
 export default function Products() {
   const [products, setProducts] = useState<Product[]>([])

@@ -1,21 +1,19 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import style from './style.module.scss'
 import { Rating } from '@mui/material';
+import { ReviewsProps } from '../../../types/Types';
 
+const Reviews: React.FC<ReviewsProps> = ({reviews }) => {
+  const reviewsRef = useRef<HTMLDivElement>(null)
 
-interface Review {
-  author: string;
-  descr: string;
-  grade: number;
-}
+  useEffect(() => {
+    if (reviewsRef.current) {
+      reviewsRef.current.scrollTop = reviewsRef.current.scrollHeight;
+    }
+  }, [reviews])
 
-interface ReviewsProps {
-  reviews: Review[];
-}
-
-const Reviews: React.FC<ReviewsProps> = ({ reviews }) => {
   return (
-    <div className={style.reviews}>
+    <div className={style.reviews} ref={reviewsRef}>
       {reviews.map((review, index) => (
         review.author && review.descr && review.grade !== undefined && (
           <div key={index} className={style.reviews_item}>

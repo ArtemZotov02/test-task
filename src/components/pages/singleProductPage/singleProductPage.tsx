@@ -1,28 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import SingleProductCard from '../../common/singleProductCard/SingleProductCard.tsx'
-interface Review {
-  author: string
-  descr: string
-  grade: number
-}
-interface Product {
-  id: number
-  name: string
-  descr: string
-  price: number
-  img: string[]
-  reviewsTitle: string
-  reviews: Review[]
-  btn: string
-  btnReview: string
-}
+import { SingleProduct } from '../../../types/Types.tsx'
+
 
 export default function SingleProductPage() {
   const location = useLocation()
   const navigate = useNavigate()
 
-  const [product, setProduct] = useState<Product | null>(null)
+  const [product, setProduct] = useState<SingleProduct | null>(null)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,7 +18,7 @@ export default function SingleProductPage() {
           navigate('/404')
           return
         }
-        const data: Product = await response.json()
+        const data: SingleProduct = await response.json()
         if (data && data.id) {
           setProduct(data)
         } else {
@@ -49,7 +35,6 @@ export default function SingleProductPage() {
   if (!product) {
     return <div>Завантаження...</div>
   }
-
 
   if (!Object.keys(product).length) {
     navigate('/404');
