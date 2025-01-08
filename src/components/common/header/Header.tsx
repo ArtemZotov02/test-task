@@ -3,13 +3,14 @@ import { useEffect, useState } from "react"
 import { Button } from "@mui/material"
 import style from './style.module.scss'
 import ClassNames from 'classnames'
-import { BrowserRouter as Router, Routes, Route, Link, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Link, NavLink, useLocation } from 'react-router-dom';
 import { HeaderData } from "../../../types/Types"
 
 
 export default function Header() {
   const [data, setData] = useState<HeaderData | null>(null) 
   const [activeMenu, setActiveMenu] = useState<boolean>(false)
+  const { pathname } = useLocation();
 
   const openMenu = () => {
     setActiveMenu(!activeMenu)
@@ -33,6 +34,11 @@ export default function Header() {
     }
     fetchData()
   }, [])
+
+  useEffect(() => {
+    document.documentElement.classList.remove("no-scroll");
+    setActiveMenu(false)
+  }, [pathname])
 
   return (
     <div className={style.container}>

@@ -1,3 +1,5 @@
+@import '../../../styles/static/mixins.scss';
+
 .product {
   display: flex;
   flex-direction: column;
@@ -29,6 +31,27 @@
       display: none;
     }
   }
+
+  @include response ($d1079) {
+    height: 405px;
+    &:hover {
+      border: none;
+      box-shadow: none;
+      .item__img {
+        display: block;
+      }
+      .item__imgHover {
+        display: none;
+      }
+      .item__buy {
+        display: block !important;
+      }
+      .item__rating {
+        display: block;
+      }
+    }
+  }
+  
 }
 .item {
   display: flex;
@@ -67,5 +90,9 @@
     background-color: var(--blackBg-10) !important;
     padding: 10px 0 !important;
     display: none !important;
+
+    @include response ($d1079) {
+      display: block !important;
+    }
   }
 }

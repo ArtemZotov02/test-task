@@ -50,17 +50,14 @@
 
     &__slider {
       display: flex;
-      justify-content: center;
       width: 90%;
       height: 100px;
       margin: 20px auto 0;
+      gap: 10px;
       &_img {
         width: auto;
         height: 100%;
-        margin: 0;
-        & + .imageSlider__slider_img {
-          margin-left: 10px;
-        }
+        margin: 0 auto;
       }
     }
     &__current {

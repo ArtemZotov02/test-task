@@ -45,6 +45,7 @@ export interface ProductsItemProps {
 
 
 export interface Review {
+  date:string;
   author: string;
   descr: string;
   grade: number;

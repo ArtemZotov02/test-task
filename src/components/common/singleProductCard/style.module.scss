@@ -42,8 +42,6 @@
 
   @include response ($d1250) {
     flex-direction: column;
-    padding-top: 0px;
-
     .info {
       width: 100%;
     }
@@ -51,8 +49,6 @@
   }
 
   @include response ($d499) {
-    padding-top: 0px;
-
     .info {
       padding-bottom: 0;
       

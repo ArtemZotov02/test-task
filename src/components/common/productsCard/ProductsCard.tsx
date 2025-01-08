@@ -28,7 +28,7 @@ const ProductsCard: React.FC<ProductsItemProps> = ({
           readOnly size="small" 
           className={style.item__rating}
         />
-      </Link>  
+      </Link>
       {btn && <Button variant="contained" className={style.item__buy}>
         {btn}
       </Button>}

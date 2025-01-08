@@ -18,7 +18,11 @@ const Reviews: React.FC<ReviewsProps> = ({reviews }) => {
         review.author && review.descr && review.grade !== undefined && (
           <div key={index} className={style.reviews_item}>
             <div className={style.reviews_item__header}>
-              <h4 className={style.reviews_item__header_name}>{review.author}</h4>
+              <div className={style.reviews_item__header_author}>
+                <h3 className={style.reviews_item__header_author__name}>{review.author} </h3>
+                <span className={style.reviews_item__header_author__date}>{review.date}</span>
+              </div>
+                
               <Rating 
                 name="read-only" 
                 defaultValue={review.grade} 

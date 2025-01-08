@@ -17,10 +17,12 @@ const FeedBack: React.FC<FeedBackProps> = ({ title, name, comment, btnReview, ra
     setErrorArea(false)
   }
   
+  const date = new Date().toLocaleDateString('ua-UA'); 
 
   const sendForm = async () => {
     if(commentArea && nameInput) {
       const review = {
+        date: date,
         author: nameInput,
         descr: commentArea,
         grade: grade || 0
@@ -128,6 +130,7 @@ const FeedBack: React.FC<FeedBackProps> = ({ title, name, comment, btnReview, ra
           name="hover-feedback"
           value={grade || 0}
           precision={1}
+          size="large"
           onChange={(event,newValue) => setGrade(newValue)}
         />
       </div>

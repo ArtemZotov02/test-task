@@ -11,7 +11,7 @@ export default function NotFoundPage() {
         <Button 
             variant="contained" 
             className={style.info_buy}
-            sx={{backgroundColor: 'var(--green)', color: 'var(--white)', width: '20%', fontWeight: '500', margin:'20px auto 0', borderRadius:'10px'}}
+            sx={{backgroundColor: 'var(--green)', color: 'var(--white)', fontSize: '14px',width: '180px', fontWeight: '500', margin:'20px auto 0', borderRadius:'10px', padding:'10px 0'}}
         >
           <Link to="/products" >
             Назад до товарів 
