@@ -33,9 +33,8 @@
   }
 
   @include response ($d1079) {
-    height: 405px;
+    height: auto;
     &:hover {
-      border: none;
       box-shadow: none;
       .item__img {
         display: block;
@@ -47,7 +46,7 @@
         display: block !important;
       }
       .item__rating {
-        display: block;
+        display: flex;
       }
     }
   }
@@ -92,7 +91,7 @@
     display: none !important;
 
     @include response ($d1079) {
-      display: block !important;
+      display: flex !important;
     }
   }
 }
