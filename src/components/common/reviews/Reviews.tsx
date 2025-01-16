@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react'
 import style from './style.module.scss'
 import { Rating } from '@mui/material';
-import { ReviewsProps } from '../../../types/Types';
+import { ReviewsProps } from './Reviews.types';
+
 
 const Reviews: React.FC<ReviewsProps> = ({reviews }) => {
   const reviewsRef = useRef<HTMLDivElement>(null)
@@ -11,6 +12,8 @@ const Reviews: React.FC<ReviewsProps> = ({reviews }) => {
       reviewsRef.current.scrollTop = reviewsRef.current.scrollHeight;
     }
   }, [reviews])
+
+
 
   return (
     <div className={style.reviews} ref={reviewsRef}>

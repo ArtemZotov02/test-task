@@ -3,8 +3,8 @@ import style from './style.module.scss'
 import { Button } from "@mui/material"
 import Reviews from '../reviews/Reviews.tsx'
 import FeedBack from '../feedBack/FeedBack.tsx'
-import { SingleProduct } from '../../../types/Types.tsx'
 import Slider from '../slider/Slider.tsx'
+import { SingleProduct } from '../../pages/singleProductPage/SingleProduct.types.ts'
 
 export default function SingleProductCard({
   id,
@@ -16,9 +16,9 @@ export default function SingleProductCard({
   reviews,
   btn,
   feedback
-
 }: SingleProduct){
   const [newReviews, setNewReviews] = useState(reviews)
+
 
   return (
     <div className={style.singleProduct}>

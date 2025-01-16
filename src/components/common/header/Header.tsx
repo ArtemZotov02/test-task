@@ -4,13 +4,20 @@ import { Button } from "@mui/material"
 import style from './style.module.scss'
 import ClassNames from 'classnames'
 import { BrowserRouter as Router, Link, NavLink, useLocation } from 'react-router-dom';
-import { HeaderData } from "../../../types/Types"
 
+import { RootState } from "../../../redux/store.ts"
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchHeader, loadHeaderData } from "../../../redux/headerData.ts"
+import { fetchData } from "../../../redux/asyncActions/fetchData.ts"
+import { HeaderData } from "./Header.types.ts"
 
 export default function Header() {
-  const [data, setData] = useState<HeaderData | null>(null) 
+
   const [activeMenu, setActiveMenu] = useState<boolean>(false)
   const { pathname } = useLocation();
+
+  const data = useSelector((state: RootState) => state.headerDataState);
+  const dispatch = useDispatch();
 
   const openMenu = () => {
     setActiveMenu(!activeMenu)
@@ -23,16 +30,8 @@ export default function Header() {
   }
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('https://demo5408873.mockable.io/header')
-        const data: HeaderData = await response.json() 
-        setData(data)
-      } catch (error) {
-        console.error("Ошибка при загрузке данных:", error)
-      }
-    }
-    fetchData()
+    // dispatch(fetchData<HeaderData>('https://demo5408873.mockable.io/header', loadHeaderData))
+    dispatch(fetchHeader('https://demo5408873.mockable.io/header',loadHeaderData))
   }, [])
 
   useEffect(() => {
@@ -56,16 +55,16 @@ export default function Header() {
           </ul>
         </nav>
         <div className={ClassNames(style.buttons, activeMenu && style.active)}>
-          <Button 
+          {data?.login && <Button 
             variant="contained" 
             sx={{ padding: '3px 10px', backgroundColor: "#5f8b6f", fontSize: '14px' }}>
             {data?.login}
-          </Button>
-          <Button 
+          </Button>}
+          {data?.registration && <Button 
             variant="outlined" 
             sx={{ padding: '3px 10px', border: "1px solid #5f8b6f ", color: 'white', fontSize: '14px' }}>
             {data?.registration}
-          </Button>
+          </Button>}
         </div>
         <div 
           className={ClassNames(style.burgerMenu, activeMenu && style.active)} 

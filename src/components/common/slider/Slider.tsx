@@ -1,12 +1,8 @@
 import React, { useState } from 'react'
 import style from './style.module.scss'
 import classNames from 'classnames';
+import {SliderProps} from './Slider.types';
 
-
-interface SliderProps {
-  name:string
-  img: string[]; 
-}
 
 const Slider: React.FC<SliderProps> = ({ name, img }) => {
   const [currentImg, setCurrentImg] = useState(0)

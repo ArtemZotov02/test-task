@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import SingleProductCard from '../../common/singleProductCard/SingleProductCard.tsx'
-import { SingleProduct } from '../../../types/Types.tsx'
+import { SingleProduct } from './SingleProduct.types.ts'
 
 
 export default function SingleProductPage() {
@@ -10,36 +10,38 @@ export default function SingleProductPage() {
 
   const [product, setProduct] = useState<SingleProduct | null>(null)
 
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`https://demo5408873.mockable.io${location.pathname}`)
+    fetch(`https://demo5408873.mockable.io${location.pathname}`)
+      .then((response) => {
         if (!response.ok) {
           navigate('/404')
-          return
+          return Promise.reject('Response not ok')
         }
-        const data: SingleProduct = await response.json()
+        return response.json()
+      })
+      .then((data: SingleProduct) => {
         if (data && data.id) {
           setProduct(data)
         } else {
           navigate('/404')
         }
-      } catch (error) {
+        if (!Object.keys(data).length) {
+          navigate('/404');
+          return null
+        }
+      })
+      .catch((error) => {
         console.error('Помилка під час завантаження даних про продукт:', error)
         navigate('/404')
-      }
-    }
-    fetchData()
+      })
   }, [location.pathname, navigate])
 
   if (!product) {
-    return <div>Завантаження...</div>
+    return <div style={{padding:'25vh 0px', textAlign: 'center', fontSize:'30px', fontWeight: '600'}}>Завантаження...</div>
   }
 
-  if (!Object.keys(product).length) {
-    navigate('/404');
-    return null
-  }
+
   return (
     <div className="container">
         {!!Object.keys(product).length && <SingleProductCard {...product}/>}

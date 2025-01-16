@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import style from './style.module.scss'
 import { Box, Button, Rating } from '@mui/material'
 import { IconButton, Input, Textarea } from '@mui/joy'
-import { FeedBackProps } from '../../../types/Types'
+import { FeedBackProps } from './Feedback.types'
 
 
 const FeedBack: React.FC<FeedBackProps> = ({ title, name, comment, btnReview, rating, setNewReviews }) => {
@@ -17,9 +17,9 @@ const FeedBack: React.FC<FeedBackProps> = ({ title, name, comment, btnReview, ra
     setErrorArea(false)
   }
   
-  const date = new Date().toLocaleDateString('ua-UA'); 
-
   const sendForm = async () => {
+    const date = new Date().toLocaleDateString('ua-UA'); 
+
     if(commentArea && nameInput) {
       const review = {
         date: date,
@@ -27,8 +27,7 @@ const FeedBack: React.FC<FeedBackProps> = ({ title, name, comment, btnReview, ra
         descr: commentArea,
         grade: grade || 0
       }
-
-
+      
       try {
         const response = await fetch('http://demo5408873.mockable.io/reviews1', {
           method: 'POST',
@@ -41,6 +40,7 @@ const FeedBack: React.FC<FeedBackProps> = ({ title, name, comment, btnReview, ra
         if (response.ok) {
           console.log(`Відгук відправленно: ${response.status}`);
           setNewReviews((prevReviews) => [...prevReviews, review])
+          
           setNameInput('')
           setCommentArea('')
           setGrade(0)
